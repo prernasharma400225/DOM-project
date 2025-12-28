@@ -15,7 +15,7 @@ function openFeatures() {
 
     })
 }
-openFeatures()
+// openFeatures()
 
 function todoList() {
 
@@ -83,4 +83,4 @@ function todoList() {
     })
 
 }
-todoList()
+// todoList()

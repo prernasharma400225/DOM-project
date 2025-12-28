@@ -272,3 +272,37 @@ section.allElems {
 }
 
 /* .mark-imp label {} */
+
+.daily-planner-fullpage{
+    display: block;
+}
+.daily-planner-fullpage .day-planner{
+    background-color: var(--tri2);
+    height: 85%;
+    margin-top: 40px;
+    width: 100%;
+    border-radius: 10px;
+    padding: 30px;
+}
+.daily-planner-fullpage .day-planner .day-planner-time{
+    
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+.day-planner .day-planner-time{
+    position: absolute;
+    top: 10%;
+    left: 1%;
+    font-size: 18px;
+}
+.day-planner .day-planner-time input{
+    padding: 15px 40px;
+    width: 100%;
+    background-color: var(--sec);
+    border-radius: 5px;
+    border: none;
+    padding-top: 32px;
+    font-size: 26px;
+    outline: none;
+}
