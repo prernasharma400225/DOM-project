@@ -304,5 +304,5 @@ section.allElems {
     border: none;
     padding-top: 32px;
     font-size: 26px;
-    outline: none;
+    /* outline: none; */
 }
