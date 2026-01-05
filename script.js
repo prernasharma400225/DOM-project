@@ -127,10 +127,12 @@ function motivationalQuote() {
     var motivationQuote = document.querySelector('.motivation-2 h3')
     var motivationAuthor = document.querySelector('.motivation-3 h3')
     async function fetchQuote() {
-        let response = await fetch('https://api.quotable.io/random')
+        let response = await fetch('https://dummyjson.com/quotes/random')
+        
         let data = await response.json();
+        // console.log("this is the actual result ",data)
 
-        motivationQuote.innerHTML = data.content
+        motivationQuote.innerHTML = data.quote
         motivationAuthor.innerHTML = `__${data.author}`
 
 
