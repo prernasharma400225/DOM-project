@@ -127,7 +127,7 @@ function motivationalQuote() {
     var motivationQuote = document.querySelector('.motivation-2 h3')
     var motivationAuthor = document.querySelector('.motivation-3 h3')
     async function fetchQuote() {
-        let response = await fetch('http://api.quotable.io/random')
+        let response = await fetch('https://api.quotable.io/random')
         let data = await response.json();
 
         motivationQuote.innerHTML = data.content
@@ -140,7 +140,8 @@ function motivationalQuote() {
 motivationalQuote()
 
 
-let timer = document.querySelector('.pomo-time h1')
+function pomodoro(){
+    let timer = document.querySelector('.pomo-time h1')
 var startBtn = document.querySelector('.pomo-time .start-timer')
 var pauseBtn = document.querySelector('.pomo-time .pause-timer')
 var resetBtn = document.querySelector('.pomo-time .reset-timer')
@@ -206,3 +207,5 @@ function resetTimer() {
 startBtn.addEventListener('click', startTimer)
 pauseBtn.addEventListener('click', pauseTimer)
 resetBtn.addEventListener('click', resetTimer)
+}
+pomodoro()
