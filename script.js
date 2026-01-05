@@ -15,7 +15,7 @@ function openFeatures() {
 
     })
 }
-// openFeatures()
+openFeatures()
 
 function todoList() {
 
@@ -83,4 +83,126 @@ function todoList() {
     })
 
 }
-// todoList()
+todoList()
+
+function dailyPlanner() {
+
+    var dayPlanner = document.querySelector('.day-planner')
+
+    var dayPlanData = JSON.parse(localStorage.getItem('.dayPlanData')) || {}
+
+    var hours = Array.from({ length: 18 }, (_, idx) => `${6 + idx}:00 - ${7 + idx}:00`)
+
+    var wholeDaySum = ''
+    hours.forEach(function (elem, idx) {
+
+        var savedData = dayPlanData[idx] || ''
+
+        wholeDaySum = wholeDaySum + `<div class = "day-planner-time">
+   <p>${elem}</p>
+   <input id=${idx} type="text" placeholder="..." value= ${savedData}>
+   </div>`
+
+    })
+
+    dayPlanner.innerHTML = wholeDaySum
+
+    var dayPlannerInput = document.querySelectorAll('.day-planner input')
+
+    dayPlannerInput.forEach(function (elem) {
+        elem.addEventListener('input', function () {
+            console.log('hello');
+
+            dayPlanData[elem.id] = elem.value
+            localStorage.setItem('dayPlanData', JSON.stringify(dayPlanData))
+        })
+    })
+
+
+}
+
+dailyPlanner()
+
+function motivationalQuote() {
+    var motivationQuote = document.querySelector('.motivation-2 h3')
+    var motivationAuthor = document.querySelector('.motivation-3 h3')
+    async function fetchQuote() {
+        let response = await fetch('http://api.quotable.io/random')
+        let data = await response.json();
+
+        motivationQuote.innerHTML = data.content
+        motivationAuthor.innerHTML = `__${data.author}`
+
+
+    }
+    fetchQuote()
+}
+motivationalQuote()
+
+
+let timer = document.querySelector('.pomo-time h1')
+var startBtn = document.querySelector('.pomo-time .start-timer')
+var pauseBtn = document.querySelector('.pomo-time .pause-timer')
+var resetBtn = document.querySelector('.pomo-time .reset-timer')
+var session = document.querySelector('.pomodoro-fullpage .session')
+var isWorkSession = true
+
+let totalSeconds = 25 * 60
+let timerInterval = null
+
+function upDateTimer() {
+    let minutes = Math.floor(totalSeconds / 60)
+    let seconds = totalSeconds % 60
+
+    timer.innerHTML = `${String(minutes).padStart('2', '0')}:${String(seconds).padStart('2', '0')}`
+}
+
+function startTimer() {
+    clearInterval(timerInterval)
+
+    if (isWorkSession) {
+        timerInterval = setInterval(() => {
+            if (totalSeconds > 0) {
+            totalSeconds--
+            upDateTimer()
+        } else {
+            isWorkSession = false
+            clearInterval(timerInterval)
+            timer.innerHTML = '05:00'
+            session.innerHTML = 'Take a Break'
+            session.style.backgroundColor = 'var(--blue)'
+            totalSeconds = 5*60
+        }
+    }, 1000)
+    }else{
+
+        timerInterval = setInterval(() => {
+        if (totalSeconds > 0) {
+            totalSeconds--
+            upDateTimer()
+        } else {
+            isWorkSession = true
+            clearInterval(timerInterval)
+            timer.innerHTML = '25:00'
+            session.innerHTML = 'Work session'
+            session.style.backgroundColor = 'var(--green)'
+            totalSeconds = 25*60
+        }
+        
+    }, 1000)
+    }
+    
+}
+
+function pauseTimer() {
+    clearInterval(timerInterval)
+}
+function resetTimer() {
+    totalSeconds = 25 * 60
+    clearInterval(timerInterval)
+    upDateTimer()
+}
+
+startBtn.addEventListener('click', startTimer)
+pauseBtn.addEventListener('click', pauseTimer)
+resetBtn.addEventListener('click', resetTimer)
