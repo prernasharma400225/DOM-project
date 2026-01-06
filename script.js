@@ -15,6 +15,7 @@ function openFeatures() {
 
     })
 }
+
 openFeatures()
 
 function todoList() {
@@ -83,6 +84,7 @@ function todoList() {
     })
 
 }
+
 todoList()
 
 function dailyPlanner() {
@@ -133,12 +135,14 @@ function motivationalQuote() {
         // console.log("this is the actual result ",data)
 
         motivationQuote.innerHTML = data.quote
+
         motivationAuthor.innerHTML = `__${data.author}`
 
 
     }
     fetchQuote()
 }
+
 motivationalQuote()
 
 
@@ -210,4 +214,36 @@ startBtn.addEventListener('click', startTimer)
 pauseBtn.addEventListener('click', pauseTimer)
 resetBtn.addEventListener('click', resetTimer)
 }
+
 pomodoro()
+
+var header1Date = document.querySelector('.header1 h1')
+var apiKey = '87cf32deedd9442793a70453250305'
+var city = 'bhopal'
+
+
+var data = null
+async function weatherAPICall(){
+    var response =await fetch(`https://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${city}`)
+    data = await response.json()   
+}
+weatherAPICall()
+
+
+function timeDate(){
+    const totaldaysOfWeek = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+    var date = new Date()
+    var daysOfWeek = totaldaysOfWeek[date.getDay()]
+    var hours = date.getHours()
+    var minutes = date.getMinutes()
+    var seconds = date.getSeconds()
+    
+    if(hours>12){
+        header1Date.innerHTML = `${daysOfWeek}, ${String(hours-12).padStart('2', '0')}:${String(minutes).padStart('2', '0')}:${String(seconds).padStart('2', '0')} PM`
+    }else{
+        header1Date.innerHTML = `${daysOfWeek}, ${String(hours).padStart('2', '0')}:${String(minutes).padStart('2', '0')}:${String(seconds).padStart('2', '0')} AM`
+    }
+}
+timeDate()
+
+

@@ -52,13 +52,46 @@ section.allElems {
     height: 100%;
     width: 100%;
     padding: 40px;
-    padding-top: 80px;
+    overflow: auto;
+    position: absolute;
+}
+.allElems header{
+    height: 200px;
+    width: 100%;
+    background-image: url(https://img.jagranjosh.com/images/2025/June/462025/why-is-the-sky-blue.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    margin-bottom: 30px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 60px;
+}
+
+header .header1 h1{
+    font-size: 70px;
+}
+header .header1 h4{
+    font-weight: 300;
+    font-size: 40px;
+}
+header .header2 h2{
+    font-size: 40px;
+}
+header .header2 h4{
+    font-size: 15px;
+}
+header .header2 h3{
+    font-size: 15px;
+}
+
+.allElems .allFeatures{
     display: flex;
     flex-wrap: wrap;
     align-items: flex-start;
     gap: 40px;
-    background-color: #381c0a;
-    position: absolute;
 }
 .elem {
     background-color: #FEBA17;
