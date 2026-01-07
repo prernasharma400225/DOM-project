@@ -217,7 +217,8 @@ resetBtn.addEventListener('click', resetTimer)
 
 pomodoro()
 
-var apiKey = '87cf32deedd9442793a70453250305'
+function weatherfunctionality(){
+    var apiKey = '87cf32deedd9442793a70453250305'
 var city = 'Bokaro'
 var header1Time = document.querySelector('.header1 h1')
 var header1Date = document.querySelector('.header1 h2')
@@ -267,5 +268,39 @@ function timeDate(){
 setInterval(() =>{
     timeDate()
 },1000)
+}
 
+weatherfunctionality()
+
+function changeTheme(){
+    var theme = document.querySelector('.theme i')
+var rootElement = document.documentElement
+
+var flag = 0
+theme.addEventListener('click',function(){
+   if(flag == 0){
+     rootElement.style.setProperty('--pri','#DFD0BB')
+    rootElement.style.setProperty('--sec','#222831')
+    rootElement.style.setProperty('--tri1','#948979')
+    rootElement.style.setProperty('--tri2','#393E46')
+    
+    theme.className = 'ri-moon-fill'
+    flag = 1
+    
+    
+    
+}else if(flag == 1){
+    rootElement.style.setProperty('--pri','#222831')
+    rootElement.style.setProperty('--sec','#DFD0BB')
+    rootElement.style.setProperty('--tri1','#393E46')
+    rootElement.style.setProperty('--tri2','#948979')
+    theme.className = 'ri-sun-fill'
+    flag=0
+   
+
+   }
+
+})
+}
+changeTheme()
 
