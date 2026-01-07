@@ -217,33 +217,55 @@ resetBtn.addEventListener('click', resetTimer)
 
 pomodoro()
 
-var header1Date = document.querySelector('.header1 h1')
 var apiKey = '87cf32deedd9442793a70453250305'
-var city = 'bhopal'
+var city = 'Bokaro'
+var header1Time = document.querySelector('.header1 h1')
+var header1Date = document.querySelector('.header1 h2')
+var header2Temp = document.querySelector('.header2 h1')
+var header2Condition = document.querySelector('.header2 h2')
+var header2precipitation = document.querySelector('.header2 .precipitation')
+var header2humidity = document.querySelector('.header2 .humidity')
+var header2wind = document.querySelector('.header2 .wind')
 
 
 var data = null
 async function weatherAPICall(){
     var response =await fetch(`https://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${city}`)
-    data = await response.json()   
+    data = await response.json()  
+    console.log(data.current);
+    
+
+    header2Temp.innerHTML = `${data.current.temp_c}°C`
+    header2Condition.innerHTML = `${data.current.condition.text}`
+    header2wind.innerHTML = `Wind: ${data.current.wind_kph}km/h`
+    header2humidity.innerHTML = `Humidity: ${data.current.humidity}%`
+    header2precipitation.innerHTML = `Heat_Index: ${data.current.heatindex_c}%`
 }
 weatherAPICall()
 
 
 function timeDate(){
     const totaldaysOfWeek = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+    const months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
     var date = new Date()
     var daysOfWeek = totaldaysOfWeek[date.getDay()]
     var hours = date.getHours()
     var minutes = date.getMinutes()
     var seconds = date.getSeconds()
+    var dates = date.getDate()
+    var month = months[date.getMonth()]
+    var year = date.getFullYear()
+
+    header1Date.innerHTML = `${dates} ${month}, ${year}`
     
     if(hours>12){
-        header1Date.innerHTML = `${daysOfWeek}, ${String(hours-12).padStart('2', '0')}:${String(minutes).padStart('2', '0')}:${String(seconds).padStart('2', '0')} PM`
+        header1Time.innerHTML = `${daysOfWeek}, ${String(hours-12).padStart('2', '0')}:${String(minutes).padStart('2', '0')}:${String(seconds).padStart('2', '0')} PM`
     }else{
-        header1Date.innerHTML = `${daysOfWeek}, ${String(hours).padStart('2', '0')}:${String(minutes).padStart('2', '0')}:${String(seconds).padStart('2', '0')} AM`
+        header1Time.innerHTML = `${daysOfWeek}, ${String(hours).padStart('2', '0')}:${String(minutes).padStart('2', '0')}:${String(seconds).padStart('2', '0')} AM`
     }
 }
-timeDate()
+setInterval(() =>{
+    timeDate()
+},1000)
 
 
