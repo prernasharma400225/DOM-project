@@ -304,3 +304,60 @@ theme.addEventListener('click',function(){
 }
 changeTheme()
 
+
+let form = document.querySelector('.dailyTask form')
+let goals = document.querySelector('.goals-addTask form #goals-input')
+let goalsDetailsInput = document.querySelector('.goals-addTask form textarea')
+
+let currentgoals = []
+
+if(localStorage.getItem('currentgoals')){
+    currentgoals = JSON.parse(localStorage.getItem('currentgoalsl'))
+}else{
+    console.log('goals list is empty');
+}
+function rendergoals(){
+    localStorage.setItem('currentgoals', JSON.stringify(currentgoals));
+    var goalsTask = document.querySelector('.daily-allTask')
+
+    var sum = ''
+    currentgoals.forEach(function (elem,idx){
+        sum = sum + `
+        <div class="goals">
+             <h2>${elem.goals}</h2>
+             <h5>${elem.goals}</h5>
+         </div>`
+    })
+
+    goalsTask.innerHTML = sum
+
+        localStorage.setItem('currentgoals', JSON.stringify(currentgoals));
+
+        // document.querySelectorAll('.goals button').forEach(function (btn) {
+        //     btn.addEventListener('click', function () {
+        //         currentTask.splice(btn.id, 1)
+        //         renderTask()
+        //     })
+        // })
+    }
+    rendergoals()
+
+
+    form.addEventListener('submit', function (e) {
+        e.preventDefault()
+        currentgoals.push(
+            {
+                goals: goalsInput.value,
+                details: goalsDetailsInput.value,
+                imp: goalsCheckbox.checked
+            }
+        )
+        rendergoals()
+        goalsInput.value = ''
+        goalsDetailsInput.value = ''
+        // goalsCheckbox.checked = false
+
+
+
+
+    })
