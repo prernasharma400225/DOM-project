@@ -270,6 +270,7 @@ header .header2 h3 {
     width: 100%;
     font-size: 20px;
     background-color: var(--tri1);
+    color: var(--tri2);
     border-radius: 5px;
     border: none;
     outline: none;
@@ -646,40 +647,53 @@ nav {
 
 /* daily-goals */
 
-.daily-goals-fullpage{
-    /* background-color: rgb(128, 128, 128); */
+/* .daily-goals-fullpage{
+    background-color: rgb(128, 128, 128); 
     display: block;
-}
+} */
 .daily-goals-fullpage h2{
     font-size: 50px;
 }
 .daily-goals-fullpage .daily-container{
-    height: 70%;
     width: 100%;
-    margin-top: 30px;
+    height: 80%;
+    margin-top: 40px;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
     align-items: center;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
     justify-content: space-between;
 }
-.daily-goals-fullpage .daily-container .daily-addTask{
+.daily-goals-fullpage .daily-container .addgoals{
     width: 33%;
     background-color: var(--tri2);
     height: 100%;
     border-radius: 10px;
 }
-.daily-goals-fullpage .daily-container .daily-allTask{
+.daily-goals-fullpage .daily-container .allgoals{
     width: 65%;
     background-color: var(--tri2);
     height: 100%;
     border-radius: 10px;
 }
-.daily-goals-fullpage .daily-container .daily-addTask form{
+.daily-goals-fullpage .daily-container .addgoals form{
+     display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
     flex-direction: column;
+    -webkit-box-align: start;
+    -ms-flex-align: start;
     align-items: flex-start;
     padding: 30px;
 }
-.daily-container .daily-addTask form #goals-input{
+.daily-container .addgoals form #goals-input{
     padding: 10px 25px;
     width: 100%;
     font-size: 20px;
@@ -691,9 +705,9 @@ nav {
     margin-bottom: 20px;
     font-weight: 500;
 }
-.daily-container .daily-addTask form textarea{
+.daily-container .addgoals form textarea{
     padding: 10px 25px;
-    height: 180px;
+    height: 250px;
     resize: none;
     width: 100%;
     font-size: 20px;
@@ -704,11 +718,12 @@ nav {
     outline: none;
     margin-bottom: 20px;
 }
-.daily-container .daily-addTask form button{
+.daily-container .addgoals form button{
     padding: 10px 25px;
     width: 100%;
     font-size: 20px;
     background-color: var(--tri1);
+    color: var(--tri2);
     border-radius: 5px;
     border: none;
     outline: none;
@@ -718,10 +733,10 @@ nav {
     -o-transition: all ease 0.3s;
     transition: all ease 0.3s;
 }
-.daily-container .daily-addTask form button:active{
+.daily-container .addgoals form button:active{
     scale: 0.95;
 }
-.daily-goals-fullpage .daily-container .daily-allTask{
+.daily-goals-fullpage .daily-container .allgoals{
      width: 65%;
     background-color: var(--tri2);
     height: 100%;
@@ -729,7 +744,7 @@ nav {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    /* -webkit-box-orient: vertical; */
+    -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
     -ms-flex-direction: column;
     flex-direction: column;
@@ -739,19 +754,23 @@ nav {
     padding: 30px;
     overflow: auto;
 }
-.goals {
+.daily-goals {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    flex-direction: column;
-    align-items: center;    
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: flex-start;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    width: 30%;
     background-color: var(--pri);
-    padding: 10px 30px;
+    padding: 10px 20px;
     margin-bottom: 10px;
     border-radius: 10px;
-    width: 30%;
 }
-.goals h2 {
+.daily-goals .d-goals h2 {
     color: var(--sec);
     font-size: 20px;
     display: -webkit-box;
@@ -760,16 +779,36 @@ nav {
     -webkit-box-align: start;
     -ms-flex-align: start;
     align-items: flex-start;
+
 }
-.goals h5 {
+.daily-goals .d-goals{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.daily-goals .d-goals h5 {
     color: var(--sec);
-    font-size: 15px;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    font-weight: 200;
+    /* font-weight: bold; */
     -webkit-box-align: start;
     -ms-flex-align: start;
     align-items: flex-start;
-    
+    font-size: 10px;
+}
+.daily-goals button{
+    padding:  4px;
+    color: var(--pri);
+    background-color: var(--green);
+    border-radius: 50%;
+    border: none;
+    font-weight: 600;
+    cursor: pointer;
+}
+.daily-goals button:hover{
+    background-color: var(--red);
+}
+.daily-goals button i{
+    font-size: 15px;
 }
