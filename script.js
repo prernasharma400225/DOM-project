@@ -15,7 +15,6 @@ function openFeatures() {
 
     })
 }
-
 openFeatures()
 
 function todoList() {
@@ -78,7 +77,6 @@ function todoList() {
     })
 
 }
-
 todoList()
 
 function dailyPlanner() {
@@ -116,7 +114,6 @@ function dailyPlanner() {
 
 
 }
-
 dailyPlanner()
 
 function motivationalQuote() {
@@ -136,7 +133,6 @@ function motivationalQuote() {
     }
     fetchQuote()
 }
-
 motivationalQuote()
 
 
@@ -208,12 +204,12 @@ function pomodoro() {
     pauseBtn.addEventListener('click', pauseTimer)
     resetBtn.addEventListener('click', resetTimer)
 }
-
 pomodoro()
 
 function weatherfunctionality() {
     var apiKey = '87cf32deedd9442793a70453250305'
-    var city = 'Bokaro'
+    var city = 'bokaro';
+    var bgsky= document.querySelector('.bg-sky')
     var header1Time = document.querySelector('.header1 h1')
     var header1Date = document.querySelector('.header1 h2')
     var header2Temp = document.querySelector('.header2 h1')
@@ -255,28 +251,85 @@ function weatherfunctionality() {
 
         if (hours > 12) {
             header1Time.innerHTML = `${daysOfWeek}, ${String(hours - 12).padStart('2', '0')}:${String(minutes).padStart('2', '0')}:${String(seconds).padStart('2', '0')} PM`
+            if(hours >=12  && hours<15){
+                bgsky.querySelector('img').src = "images/afternoon.jpg"
+                bgsky.querySelector('video').src = "Videos/sky.mp4"
+            }else if(hours>=15 && hours<17){
+                bgsky.querySelector('img').src = "images/eveningimg.avif"
+                bgsky.querySelector('video').src = "Videos/evening.mp4"
+            }
+            else{
+                bgsky.querySelector('img').src = "images/night.jpg"
+                bgsky.querySelector('video').src = "Videos/night.mp4"
+            }
+            
         } else {
             header1Time.innerHTML = `${daysOfWeek}, ${String(hours).padStart('2', '0')}:${String(minutes).padStart('2', '0')}:${String(seconds).padStart('2', '0')} AM`
+            if(hours>=5 && hours<12){
+                bgsky.querySelector('img').src = "images/sky-blue.jpg"
+                bgsky.querySelector('video').src = "Videos/morning.mp4"
+            }
+             else{
+                bgsky.querySelector('img').src = "images/night.jpg"
+                bgsky.querySelector('video').src = "Videos/night.mp4"
+            }
+
         }
     }
     setInterval(() => {
         timeDate()
     }, 1000)
 }
-
 weatherfunctionality()
 
 function changeTheme() {
     var theme = document.querySelector('.theme i')
+    var Img = document.querySelectorAll('.elem img')
     var rootElement = document.documentElement
+
+    // light
+
+    var lightImg = [
+        "images/todo-light.avif",
+
+        "images/daily-planLight.jpg",
+
+        "images/moti-light.jpg",
+
+        "images/pomolight.jpeg",
+
+        "images/goalsLight.avif"
+    ]
+
+
+    // darkimg
+
+    var darkImg = [
+        "images/todoDark.png",
+
+        "images/daily-PlanDark.png",
+
+        "images/moti-Dark.jpg",
+
+        "images/pomoDark.jpg",
+
+        "images/goalsDark.jpg"
+    ]
+
 
     var flag = 0
     theme.addEventListener('click', function () {
         if (flag == 0) {
-            rootElement.style.setProperty('--pri', '#DFD0BB')
-            rootElement.style.setProperty('--sec', '#222831')
-            rootElement.style.setProperty('--tri1', '#948979')
-            rootElement.style.setProperty('--tri2', '#393E46')
+            rootElement.style.setProperty('--pri', '#bfc6cc')
+            rootElement.style.setProperty('--sec', '#010f1a')
+            rootElement.style.setProperty('--tri1', '#456882')
+            rootElement.style.setProperty('--tri2', '#092133')
+            rootElement.style.setProperty('--red', '#bfc6cc')
+            rootElement.style.setProperty('--green', '#456882')
+
+            Img.forEach((img,i)=>{
+                img.src = darkImg[i]
+            })
 
             theme.className = 'ri-moon-fill'
             flag = 1
@@ -284,10 +337,17 @@ function changeTheme() {
 
 
         } else if (flag == 1) {
-            rootElement.style.setProperty('--pri', '#222831')
-            rootElement.style.setProperty('--sec', '#DFD0BB')
-            rootElement.style.setProperty('--tri1', '#393E46')
-            rootElement.style.setProperty('--tri2', '#948979')
+            rootElement.style.setProperty('--pri', '#f99b9b')
+            rootElement.style.setProperty('--sec', '#faf8f8')
+            rootElement.style.setProperty('--tri1', '#fabdbd')
+            rootElement.style.setProperty('--tri2', '#f7d5d5')
+            rootElement.style.setProperty('--red', '#f99b9b')
+            rootElement.style.setProperty('--green', '#f7d5d5')
+
+            Img.forEach((img,i)=>{
+                img.src = lightImg[i]
+            })
+
             theme.className = 'ri-sun-fill'
             flag = 0
 

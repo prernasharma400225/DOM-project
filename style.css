@@ -6,12 +6,12 @@
 */
 
 :root {
-    --pri: #222831;
-    --sec: #DFD0BB;
-    --tri1: #393E46;
-    --tri2: #948979;
-    --red: red;
-    --green: rgb(9, 138, 89);
+    --pri: #f99b9b;
+    --sec: #faf8f8;
+    --tri1: #fabdbd;
+    --tri2: #f7d5d5;
+    --red: #f99b9b;
+    --green: #f7d5d5;
     --blue: rgb(0, 191, 255);
     --black: var(--black)
 }
@@ -66,22 +66,63 @@ section.allElems {
 .allElems header {
     height: 250px;
     width: 100%;
-    background-image: url(sky-blue.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
+    position: relative;
     margin-bottom: 30px;
     border-radius: 10px;
     display: -webkit-box;
     display: -ms-flexbox;
+   overflow: hidden;
+   display: flex;
+   align-items: center;
+   cursor: pointer;
+    
+}
+
+header .bg-sky{
+    position: absolute;
+    height: 250px;
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
+    /* filter: blur(6px); */
+    box-shadow: 0 0 10px rgba(0,0,0,0.4);
+    transition: filter .3s ease, box-shadow .3s ease;
+}
+.bg-sky img,
+.bg-sky video{
+    cursor: pointer;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+.bg-sky video{
+    opacity: 0;
+    transition: opacity 0.3s ease;
+
+}
+header:hover .bg-sky{
+    filter: blur(0);
+}
+header:hover .bg-sky video{
+    opacity: 1;
+    
+}
+header .weather{
+    width: 100%;
+    z-index: 9;
     display: flex;
+    justify-content: space-between;
+    display: flex;
+    align-items: center;
     -webkit-box-align: center;
     -ms-flex-align: center;
     align-items: center;
     -webkit-box-pack: justify;
     -ms-flex-pack: justify;
     justify-content: space-between;
-    padding: 60px;
+    padding: 30px;
 }
 
 header .header1 h1 {
@@ -116,7 +157,6 @@ header .header2 h3 {
     font-size: 15px;
 }
 
-
 .allElems .allFeatures {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -145,11 +185,20 @@ header .header2 h3 {
     box-shadow: 0 5px 10px var(--black);
 }
 
-.elem img {
+.elem img,
+.elem video {
+    position: absolute;
     height: 100%;
     width: 100%;
     -o-object-fit: cover;
     object-fit: cover;
+}
+.elem:hover video{
+   opacity: 1;
+}
+.elem video{
+    opacity: 0;
+    transition: opacity .3s ease;
 }
 
 .elem h2 {
@@ -192,6 +241,13 @@ header .header2 h3 {
 
 .todo-list-fullpage h2 {
     font-size: 50px;
+}
+.fullElem button{
+    padding: 5px;
+}
+.fullElem button i{
+    font-size: 30px;
+    color: #faf8f8;
 }
 
 .todo-list-fullpage .todo-container {
@@ -402,6 +458,9 @@ header .header2 h3 {
     -webkit-box-pack: justify;
     -ms-flex-pack: justify;
     justify-content: space-between;
+}
+.daily-planner-fullpage .day-planner::-webkit-scrollbar{
+    display: none;
 }
 
 .daily-planner-fullpage .day-planner .day-planner-time {
