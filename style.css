@@ -6,14 +6,14 @@
 */
 
 :root {
-    --pri: #f99b9b;
+    --pri: #010f1a;
     --sec: #faf8f8;
-    --tri1: #fabdbd;
-    --tri2: #f7d5d5;
-    --red: #f99b9b;
-    --green: #f7d5d5;
+    --tri1: #092133;
+    --tri2: #456882;
+    --red: #456882;
+    --green: #bfc6cc;
     --blue: rgb(0, 191, 255);
-    --black: var(--black)
+    
 }
 
 @font-face {
@@ -169,6 +169,20 @@ header .header2 h3 {
     gap: 40px;
 }
 
+/* @property --rotate{
+    syntax: "<angle>";
+    initial-value: 0deg;
+    inherits: false;
+}
+@keyframes border{
+    from{
+        --rotate:0deg;
+
+    }
+    to{
+        --rotate:360deg;
+    }
+} */
 .elem {
     background-color: var(--tri1);
     overflow: hidden;
@@ -183,6 +197,13 @@ header .header2 h3 {
     transition: all ease 0.2s;
     -webkit-box-shadow: 0 5px 10px var(--black);
     box-shadow: 0 5px 10px var(--black);
+    transition: .3s ease;
+    
+}
+.elem:hover{
+    border: 2px solid var(--pri);
+    box-shadow:  0 0 50px var(--pri);
+    transition: .3s ease;
 }
 
 .elem img,

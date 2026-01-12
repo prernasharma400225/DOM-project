@@ -217,6 +217,14 @@ function weatherfunctionality() {
     var header2precipitation = document.querySelector('.header2 .precipitation')
     var header2humidity = document.querySelector('.header2 .humidity')
     var header2wind = document.querySelector('.header2 .wind')
+    var v = document.querySelector('#v')
+
+    v.addEventListener('timeupdate', ()=>{
+        if(v.duration - v.currentTime < 0.15){
+            v.currentTime = 0;
+            v.play();
+        }
+    })
 
 
     var data = null
@@ -337,12 +345,12 @@ function changeTheme() {
 
 
         } else if (flag == 1) {
-            rootElement.style.setProperty('--pri', '#f99b9b')
+            rootElement.style.setProperty('--pri', '#010f1a')
             rootElement.style.setProperty('--sec', '#faf8f8')
-            rootElement.style.setProperty('--tri1', '#fabdbd')
-            rootElement.style.setProperty('--tri2', '#f7d5d5')
-            rootElement.style.setProperty('--red', '#f99b9b')
-            rootElement.style.setProperty('--green', '#f7d5d5')
+            rootElement.style.setProperty('--tri1', '#092133')
+            rootElement.style.setProperty('--tri2', '#456882')
+            rootElement.style.setProperty('--red', '#456882')
+            rootElement.style.setProperty('--green', '#bfc6cc')
 
             Img.forEach((img,i)=>{
                 img.src = lightImg[i]
