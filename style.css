@@ -231,7 +231,8 @@ header .header2 h3 {
 .allFeatures {
     background-color: rgba(255, 255, 255, 0.281);
     filter: blur(90%);
-    margin-top: 200px;
+    margin-top: 250px;
+    
     padding: 20px;
     display: flex;
     overflow-y: auto;
