@@ -6,11 +6,11 @@
 */
 
 :root {
-    --pri: #010f1a;
-    --sec: #faf8f8;
-    --tri1: #092133;
-    --tri2: #456882;
-    --red: #456882;
+    --pri: #000000;
+    --sec: #e5e5e5;
+    --tri1: #424242;
+    --tri2: #9a9b9b;
+    --red: #8a8a8a;
     --green: #bfc6cc;
     --blue: rgb(0, 191, 255);
     
@@ -48,24 +48,76 @@ body {
 }
 
 #main {
-    height: 120%;
+    height:100%;
     width: 100%;
     padding-top: 50px;
-    background-color: var(--sec);
+   
 
 }
 
 section.allElems {
     height: 100%;
     width: 100%;
-    padding: 40px;
-    /* overflow: auto; */
     position: absolute;
 }
 
-.allElems header {
-    height: 250px;
+nav {
+    position: fixed;
+    top: 0;
+    z-index: 10;
+    height: 60px;
     width: 100%;
+    
+}
+
+.nav-in {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    background-color: var(--tri2);
+    padding: 10px;
+    
+}
+
+.nav-in h2 {
+    font-size: 30px;
+    font-weight: 700;
+}
+
+.theme {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    gap: 10px;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+
+.theme a {
+    text-decoration: none;
+}
+
+.theme i {
+    padding: 7px;
+    border-radius: 50%;
+    background-color: var(--sec);
+    color: var(--tri1);
+    font-weight: 700;
+}
+
+.allElems{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     position: relative;
     margin-bottom: 30px;
     border-radius: 10px;
@@ -78,9 +130,10 @@ section.allElems {
     
 }
 
-header .bg-sky{
-    position: absolute;
-    height: 250px;
+.bg-sky{
+    z-index: -9;
+    position: fixed;
+    height: 100%;
     width: 100%;
     object-fit: cover;
     object-position: center;
@@ -88,8 +141,8 @@ header .bg-sky{
     box-shadow: 0 0 10px rgba(0,0,0,0.4);
     transition: filter .3s ease, box-shadow .3s ease;
 }
-.bg-sky img,
-.bg-sky video{
+/* .bg-sky video, */
+.bg-sky img{
     cursor: pointer;
     position: absolute;
     height: 100%;
@@ -97,20 +150,24 @@ header .bg-sky{
     object-fit: cover;
     object-position: center;
 }
-.bg-sky video{
+.bg-sky #sec{
     opacity: 0;
     transition: opacity 0.3s ease;
 
 }
-header:hover .bg-sky{
+.allElems:hover .bg-sky{
     filter: blur(0);
 }
-header:hover .bg-sky video{
+.allElems:hover .bg-sky #sec{
     opacity: 1;
     
 }
+header{
+    padding: 20px;
+    position: fixed;
+}
 header .weather{
-    width: 100%;
+    width: 900px;
     z-index: 9;
     display: flex;
     justify-content: space-between;
@@ -122,11 +179,19 @@ header .weather{
     -webkit-box-pack: justify;
     -ms-flex-pack: justify;
     justify-content: space-between;
-    padding: 30px;
+    gap: 20px;
+    padding: 50px;
+    border-radius: 10px;
+    border: 2px solid rgba(255, 255, 255, 0.375);
+    background-color: rgba(255, 255, 255, 0.241);
+    backdrop-filter: blur(4px); 
+    filter: blur(0);
 }
-
+header .header1{
+    padding: 10px;
+}
 header .header1 h1 {
-    font-size: 70px;
+    font-size: 60px;
     margin-bottom: 30px;
 }
 
@@ -137,7 +202,7 @@ header .header1 h2 {
 
 header .header1 h4 {
     font-weight: 300;
-    font-size: 40px;
+    font-size: 30px;
 }
 
 header .header2 h2 {
@@ -157,39 +222,32 @@ header .header2 h3 {
     font-size: 15px;
 }
 
-.allElems .allFeatures {
-    display: -webkit-box;
-    display: -ms-flexbox;
+.allElems {
+    position: relative;
+    height: 100%;
+    overflow: visible;
+}
+
+.allFeatures {
+    background-color: rgba(255, 255, 255, 0.281);
+    filter: blur(90%);
+    margin-top: 200px;
+    padding: 20px;
     display: flex;
-    -ms-flex-wrap: wrap;
-    flex-wrap: wrap;
-    -webkit-box-align: start;
-    -ms-flex-align: start;
-    align-items: flex-start;
-    gap: 40px;
+    overflow-y: auto;
+  backdrop-filter: blur(4px); 
+    flex-direction: column;
+    gap:5px;
+    position:absolute;
+    right: 0;
 }
 
-/* @property --rotate{
-    syntax: "<angle>";
-    initial-value: 0deg;
-    inherits: false;
-}
-@keyframes border{
-    from{
-        --rotate:0deg;
-
-    }
-    to{
-        --rotate:360deg;
-    }
-} */
-.elem {
-    background-color: var(--tri1);
+.elem { 
     overflow: hidden;
-    border-radius: 10px;
-    font-size: 20px;
-    height: 280px;
-    width: 200px;
+    height: 150px;
+    width: 150px;
+    
+    border-radius: 50%;
     position: relative;
     cursor: pointer;
     -webkit-transition: all ease 0.2s;
@@ -235,13 +293,13 @@ header .header2 h3 {
 }
 
 .fullElem {
-    height: 120%;
+    height: 100%;
     width: 100%;
     background-color: var(--sec);
     padding: 30px;
     top: 0;
     display: none;
-    position: absolute;
+    position: fixed;
     z-index: 999;
 }
 
@@ -454,6 +512,8 @@ header .header2 h3 {
 
 .mark-imp input {
     scale: 1.7;
+    background-color: #456882;
+    color: #092133;
 }
 
 .daily-planner-fullpage h2 {
@@ -674,56 +734,7 @@ header .header2 h3 {
     border-radius: 5px;
 }
 
-nav {
-    position: fixed;
-    top: 0;
-    z-index: 10;
-    height: 60px;
-    width: 100%;
-    padding: 20px 40px;
-}
 
-.nav-in {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
-    -webkit-box-pack: justify;
-    -ms-flex-pack: justify;
-    justify-content: space-between;
-    background-color: var(--tri2);
-    padding: 10px;
-    border-radius: 5px;
-}
-
-.nav-in h2 {
-    font-size: 30px;
-    font-weight: 700;
-}
-
-.theme {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    gap: 10px;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
-}
-
-.theme a {
-    text-decoration: none;
-}
-
-.theme i {
-    padding: 7px;
-    border-radius: 50%;
-    background-color: var(--sec);
-    color: var(--tri1);
-    font-weight: 700;
-}
 
 /* daily-goals */
 

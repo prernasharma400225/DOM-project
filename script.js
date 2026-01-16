@@ -209,7 +209,7 @@ pomodoro()
 function weatherfunctionality() {
     var apiKey = '87cf32deedd9442793a70453250305'
     var city = 'bokaro';
-    var bgsky= document.querySelector('.bg-sky')
+    var bgsky= document.querySelector('.bg-sky ')
     var header1Time = document.querySelector('.header1 h1')
     var header1Date = document.querySelector('.header1 h2')
     var header2Temp = document.querySelector('.header2 h1')
@@ -217,14 +217,7 @@ function weatherfunctionality() {
     var header2precipitation = document.querySelector('.header2 .precipitation')
     var header2humidity = document.querySelector('.header2 .humidity')
     var header2wind = document.querySelector('.header2 .wind')
-    var v = document.querySelector('#v')
-
-    v.addEventListener('timeupdate', ()=>{
-        if(v.duration - v.currentTime < 0.15){
-            v.currentTime = 0;
-            v.play();
-        }
-    })
+    
 
 
     var data = null
@@ -257,29 +250,29 @@ function weatherfunctionality() {
 
         header1Date.innerHTML = `${dates} ${month}, ${year}`
 
-        if (hours > 12) {
+        if (hours >= 12) {
             header1Time.innerHTML = `${daysOfWeek}, ${String(hours - 12).padStart('2', '0')}:${String(minutes).padStart('2', '0')}:${String(seconds).padStart('2', '0')} PM`
             if(hours >=12  && hours<15){
-                bgsky.querySelector('img').src = "images/afternoon.jpg"
-                bgsky.querySelector('video').src = "Videos/sky.mp4"
+                bgsky.querySelector('#first').src = "images/afternoon.jpg"
+                bgsky.querySelector('#sec').src = "images/afternoom.gif"
             }else if(hours>=15 && hours<17){
-                bgsky.querySelector('img').src = "images/eveningimg.avif"
-                bgsky.querySelector('video').src = "Videos/evening.mp4"
+                bgsky.querySelector('#first').src = "images/eveningimg.avif"
+                bgsky.querySelector('#sec').src = "images/sunset.webp"
             }
             else{
-                bgsky.querySelector('img').src = "images/night.jpg"
-                bgsky.querySelector('video').src = "Videos/night.mp4"
+                bgsky.querySelector('#first').src = "images/night.jpg"
+                bgsky.querySelector('#sec').src = "images/nightmoon.gif"
             }
             
         } else {
             header1Time.innerHTML = `${daysOfWeek}, ${String(hours).padStart('2', '0')}:${String(minutes).padStart('2', '0')}:${String(seconds).padStart('2', '0')} AM`
             if(hours>=5 && hours<12){
-                bgsky.querySelector('img').src = "images/sky-blue.jpg"
-                bgsky.querySelector('video').src = "Videos/morning.mp4"
+                bgsky.querySelector('#first').src = "images/sunriseimg.jpg"
+                bgsky.querySelector('#sec').src = "images/sunR.gif"
             }
              else{
-                bgsky.querySelector('img').src = "images/night.jpg"
-                bgsky.querySelector('video').src = "Videos/night.mp4"
+                bgsky.querySelector('#first').src = "images/night.jpg"
+                bgsky.querySelector('#sec').src = "images/nightmoon.gif"
             }
 
         }
@@ -328,12 +321,12 @@ function changeTheme() {
     var flag = 0
     theme.addEventListener('click', function () {
         if (flag == 0) {
-            rootElement.style.setProperty('--pri', '#bfc6cc')
-            rootElement.style.setProperty('--sec', '#010f1a')
-            rootElement.style.setProperty('--tri1', '#456882')
-            rootElement.style.setProperty('--tri2', '#092133')
+            rootElement.style.setProperty('--pri', '#e5e5e5')
+            rootElement.style.setProperty('--sec', '#000000')
+            rootElement.style.setProperty('--tri1', '#9a9b9b')
+            rootElement.style.setProperty('--tri2', '#424242')
             rootElement.style.setProperty('--red', '#bfc6cc')
-            rootElement.style.setProperty('--green', '#456882')
+            rootElement.style.setProperty('--green', '#8a8a8a')
 
             Img.forEach((img,i)=>{
                 img.src = darkImg[i]
@@ -345,11 +338,11 @@ function changeTheme() {
 
 
         } else if (flag == 1) {
-            rootElement.style.setProperty('--pri', '#010f1a')
-            rootElement.style.setProperty('--sec', '#faf8f8')
-            rootElement.style.setProperty('--tri1', '#092133')
-            rootElement.style.setProperty('--tri2', '#456882')
-            rootElement.style.setProperty('--red', '#456882')
+            rootElement.style.setProperty('--pri', '#000000')
+            rootElement.style.setProperty('--sec', '#e5e5e5')
+            rootElement.style.setProperty('--tri1', '#424242')
+            rootElement.style.setProperty('--tri2', '#9a9b9b')
+            rootElement.style.setProperty('--red', '#8a8a8a')
             rootElement.style.setProperty('--green', '#bfc6cc')
 
             Img.forEach((img,i)=>{
